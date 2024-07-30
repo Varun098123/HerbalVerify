@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursery and Botanical Gardens</title>
+    <link rel="stylesheet" href="/static/nursery.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #4CAF50, #81C784);
+        }
+
+        .navbar-brand label {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-brand p {
+            color: white;
+        }
+
+        .navbar-nav {
+            list-style: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+
+        .find-link {
+            display: block;
+            width: fit-content;
+            margin: 118px auto 0;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .find-link:hover {
+            background-color: #45a049;
+        }
+
+        .find-link:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-light fixed-top background: linear-gradient(to right, #4CAF50, #81C784);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <label style="font-size: 30px;"><img src="/static/herbalverify.jpg" width="55px" height="55px"
+                        alt=""><b>
+                        HerbalVerify</b></label>
+                <p style="font-size: 10px; margin-top: -20px; margin-left: 65px;">Give Best Results</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> HerbalVerify</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scan">Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scanDisease">Disease Detection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/ayurvedicShop">Ayurvedic Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/nursery">Nursery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/homeRemedies">Home Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/doctor_data">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/post">See Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/submitPost">Post Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/adminPost">Admin Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/uploadDoc">Doctor Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/">SignOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="find-link">
+        <a href="#" style="color: #fff;" onclick="findNursery()">Find Nursery and Botanical Garden Near Me</a>
+    </div>
+
+    <script>
+        function findNursery() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var url = "https://www.google.com/maps/search/nursery+and+botanical+garden+near+me/@"
+                        + latitude + "," + longitude + ",15z";
+                    window.open(url, '_blank');
+                }, function (error) {
+                    alert('Error accessing your location: ' + error.message);
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        }
+    </script>
+    <input type="text" id="myInput" placeholder="Enter Your City Name" onkeyup="searchFun()">
+    <div class="container2">
+        <table class="myTable" border="1" cellspacing="0" cellpadding="10">
+            <tr class="tableHeader" style="text-align: center;">
+                <th style="width: auto;"><b>City</b></th>
+                <th style="width: auto;"><b>Nurseries</b></th>
+                <th style="width: auto;"><b>Address</b></th>
+                <th style="width: auto;"><b>Phone No.</b></th>
+                <th style="width: auto;"><b>Location</b></th>
+            </tr>
+            <!-- Nanded -->
+            <tr>
+                <td>Nanded</td>
+                <td>SHREE BASATWAR AYURVEDIC STORE</td>
+                <td>SHOP NO 02, RIZWAN HIGHTS, MALGONE ROAD, NAKA, Nanded, Taroda Kh., Maharashtra 431605</td>
+                <td>07709977204</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15434740.581721248!2d57.7891762!3d19.1844019!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d75270e3682f%3A0xb78cac1a5875f312!2sSHREE%20BASATWAR%20AYURVEDIC%20STORE!5e0!3m2!1sen!2sin!4v1715190830986!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Nanded</td>
+                <td>Swami Ayurveda Agency Nanded</td>
+                <td>5883+M2H, Ganesh Nagar Rd, Ganesh Nagar, Nanded, Nanded-Waghala, Maharashtra 431602</td>
+                <td>NaN</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15436399.706480505!2d68.33776345!3d19.166692600000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d7fd0686517f%3A0xb8dc7a6fe9050ba!2sSwami%20Ayurveda%20Agency%20Nanded!5e0!3m2!1sen!2sin!4v1715191163676!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Nanded</td>
+                <td>MOGADPALLY AYURVEDIC CARE</td>
+                <td>Shop No.1, Kailash Nagar, Nanded, Nanded-Waghala, Maharashtra 431601</td>
+                <td>09511824162</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30147.302120630466!2d77.28735323955075!3d19.177165799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d74e834b9eb7%3A0x93dc08146a4f4c2!2sMOGADPALLY%20AYURVEDIC%20CARE!5e0!3m2!1sen!2sin!4v1715191294805!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Nanded</td>
+                <td>Sejal Ayurvedic Aushadhi</td>
+                <td>Sanman Hight, Malegoan Road Nanded Near Axis Bank Malegaon, Road, Nanded, Maharashtra 431605</td>
+                <td>09970799229</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30145.33690352202!2d77.28275583955077!3d19.187902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d76c70f481af%3A0xffb0c7d32baf689c!2sSejal%20Ayurvedic%20Aushadhi!5e0!3m2!1sen!2sin!4v1715191615395!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Nanded</td>
+                <td>Sanjivani Ayurvedic Medical</td>
+                <td>Shop No 3 Apurva Plaza Bhavsar Chowk, Nanded Malegaon Rd, Taroda Kh., Maharashtra 431605</td>
+                <td>08275941109</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30145.159699717133!2d77.28220133955078!3d19.188869800000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d7ef950e4f6b%3A0x21872b37ef9e52ba!2sSanjivani%20Ayurvedic%20Medical!5e0!3m2!1sen!2sin!4v1715191739577!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <!-- Latur -->
+            <tr>
+                <td>Latur</td>
+                <td>Aurade Ayurvedic Store</td>
+                <td>1087, Lokhand Galli, Ganj Golai, Latur, Maharashtra 413512</td>
+                <td>02382245905</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969181.0005725262!2d76.022672565625!3d18.399072399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf8397fc5e74df%3A0x9889e833d88385f!2sAurade%20Ayurvedic%20Store!5e0!3m2!1sen!2sin!4v1715191907752!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Latur</td>
+                <td>Om Sai Ayurvedic Jadi-Buti Bhandar</td>
+                <td>Shop No. 9 Sudarshan Lodge, Chatrapati Shivaji Maharaj Chowk, Latur, Maharashtra 413512</td>
+                <td>08412913253</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30286.9826846437!2d76.54714463955081!3d18.3986378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf83e9c1e9419b%3A0xd43e986f95d1de67!2sOm%20Sai%20Ayurvedic%20Jadi-Buti%20Bhandar!5e0!3m2!1sen!2sin!4v1715193334557!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Latur</td>
+                <td>Prakash Provision Stores (Ayurvedic Shop)</td>
+                <td>Shop No. 9 Sudarshan Lodge, Chatrapati Shivaji Maharaj Chowk, Latur, Maharashtra 413512</td>
+                <td>09326510022</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30286.525916534738!2d76.56439953955075!3d18.401235400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf8397a3c51837%3A0xbc5c11474b7723d5!2sPrakash%20Provision%20Stores%20(Ayurvedic%20Shop)!5e0!3m2!1sen!2sin!4v1715193537909!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Latur</td>
+                <td>Digambar Kushaba Kotalwar (Ayurvedic and jadi buti store)</td>
+                <td>lokhand line, Ganj Golai, Latur, Maharashtra 413512</td>
+                <td>02382243056</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30286.881439984165!2d76.56574353955078!3d18.399213600000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf8397f933cf8f%3A0x2b00d03afcb1d212!2sDigambar%20Kushaba%20Kotalwar%20(Ayurvedic%20and%20jadi%20buti%20store)!5e0!3m2!1sen!2sin!4v1715193717458!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <!-- Parbhani -->
+            <tr>
+                <td>Parbhani</td>
+                <td>Bhakti Ayurvedic Aushdhalaya</td>
+                <td>Railway Station Rd, New Mondha, Parbhani, Maharashtra 431401</td>
+                <td>07020332670</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964207.7432220165!2d76.21128816562502!3d19.26337519999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019d1cbfe7255%3A0x84e6e773e10f1eb6!2sBhakti%20medical%20and%20Ayurvedic%20Aushdhalaya!5e0!3m2!1sen!2sin!4v1715193855787!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Parbhani</td>
+                <td>NEW MUQDKER AYURVEDIC MEDICINE SHOP</td>
+                <td>Shop No 1, Inline Of Hakka Medical, opp. Civil Hospital, Shastri Nagar, Parbhani, Maharashtra 431401
+                </td>
+                <td>09970719485</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964159.9350981875!2d76.20452156562499!3d19.27150250000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd01913f790f18b%3A0xef1e695a2cb30284!2sNEW%20MUQDKER%20AYURVEDIC%20MEDICINE%20AND%20HOSPITAL%20SHOP!5e0!3m2!1sen!2sin!4v1715194089509!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Parbhani</td>
+                <td>Shri Hari Ayurvedic Medicine</td>
+                <td>Shop No.01, Venkatesh Nagar, Parbhani, Maharashtra 431401</td>
+                <td>07058124099</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964236.9745400683!2d76.23146286562502!3d19.25840429999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd01922211703f1%3A0x727f56e9c7dd9d34!2sShri%20Hari%20Ayurvedic%20Medicine!5e0!3m2!1sen!2sin!4v1715194203686!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Parbhani</td>
+                <td>Sanjivani Ayurvediv Aushadhalaya</td>
+                <td>Shop.no 1 Narayanan Chal, Nehru Rd, Parbhani, Maharashtra 431401</td>
+                <td>09822531403</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964208.2107779249!2d76.21178056562502!3d19.263295699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019585eb03ec1%3A0x57b48e9ecfeefaf6!2sSanjivani%20Ayurvediv%20Aushadhalaya!5e0!3m2!1sen!2sin!4v1715194302359!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <!-- Dehradun -->
+            <tr>
+                <td>Dehradun</td>
+                <td>Neeraj Ayurvedic</td>
+                <td>8, opp. Hotel Embassy, Dhamawala Mohalla, Dhamawala Bazaar, Dehradun, Uttarakhand 248001</td>
+                <td>08393057757</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110211.93704130329!2d77.96744385820314!3d30.319018100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092994887301e5%3A0x53ed37e80eab0130!2sNeeraj%20Ayurvedic!5e0!3m2!1sen!2sin!4v1715194670267!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <tr>
+                <td>Dehradun</td>
+                <td>Ayurvedic Medicine Store - Avi Sales & Marketing</td>
+                <td>92, behind URJA park, THDC Colony, Dehrakhas, Patel Nagar, Dehradun, Uttarakhand 248001</td>
+                <td>NaN</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110232.7365705378!2d77.95001505820315!3d30.30052280000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929ece1660e3b%3A0xd27990c46be498c2!2sAyurvedic%20Medicine%20Store%20-%20Avi%20Sales%20%26%20Marketing!5e0!3m2!1sen!2sin!4v1715194752872!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+
+            <tr>
+                <td>Dehradun</td>
+                <td>Real Ayurveda Ayurvedic Shop</td>
+                <td>Azad Colony Haridwar bypass road, near Munni choke, Dehradun, Uttarakhand 248171</td>
+                <td>09758101460</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110248.03393159463!2d77.93349705820307!3d30.286913600000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092bcf23e187e7%3A0xf46d629cefe89ac7!2sReal%20Ayurveda%20%7CAyurvedic%20Shop%7C%20Hakeem%20m.%20Wasil%20-%20Ayurvedaacharya!5e0!3m2!1sen!2sin!4v1715194860240!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+
+            <tr>
+                <td>Dehradun</td>
+                <td>Siddhi Vinyak Ayurvedic Medical Store</td>
+                <td>7, New Rd, opp. MKP College, Race Course, Dehradun, Uttarakhand 248001</td>
+                <td>07217273737</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110213.47215434084!2d77.97562375820317!3d30.317653399999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929ff91e52ab7%3A0x6085c59f2aa1e335!2sSiddhi%20Vinyak%20Ayurvedic%20Medical%20Store!5e0!3m2!1sen!2sin!4v1715194926332!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <!-- Mussoorie -->
+            <tr>
+                <td>Mussoorie</td>
+                <td>Patanjali Arogya Kendra</td>
+                <td>Ground Floor Nriankari Babahardev Singh Marg, Mussoorie, near Modern school, Dehradun, Uttarakhand
+                    248179</td>
+                <td>09805157100</td>
+                <td><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110052.23697795736!2d78.00588015820311!3d30.460687599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d1949f3d863b%3A0x244384ad99630db9!2sPatanjali%20Arogya%20Kendra!5e0!3m2!1sen!2sin!4v1715195243375!5m2!1sen!2sin"
+                        width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+            </tr>
+            <!-- add new district data for your remainder -->
+
+        </table>
+    </div>
+    <script>
+        const searchFun = () => {
+            let filter = document.getElementById('myInput').value.toUpperCase();
+            let myTable = document.querySelector('.myTable');
+            let rows = myTable.querySelectorAll('tr');
+
+            rows.forEach((row) => {
+                let cityCell = row.querySelector('td:first-child');
+                if (cityCell) {
+                    let textValue = cityCell.textContent || cityCell.innerText;
+                    row.style.display = textValue.toUpperCase().includes(filter) ? "" : "none";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

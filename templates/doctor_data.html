@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 114px;
+            color: #4CAF50;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .doctor {
+            width: 70%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .photo-container {
+            width: 40%;
+            margin-right: 20px;
+
+          
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            max-height: 250px;
+        }
+
+        .info-container {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        span {
+            color: #555;
+        }
+
+        @media screen and (max-width: 600px) {
+            .doctor {
+                flex-direction: column;
+            }
+
+            .photo-container {
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
+
+            .info-container {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #4CAF50, #81C784);
+        }
+
+        .navbar-brand label {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-brand p {
+            color: white;
+        }
+
+        .navbar-nav {
+            list-style: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-light fixed-top background: linear-gradient(to right, #4CAF50, #81C784);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <label style="font-size: 30px;"><img src="/static/herbalverify.jpg" width="55px" height="55px"
+                        alt=""><b>
+                        HerbalVerify</b></label>
+                <p style="font-size: 10px; margin-top: -20px; margin-left: 65px;">Give Best Results</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> HerbalVerify</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scan">Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scanDisease">Disease Detection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/ayurvedicShop">Ayurvedic Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/nursery">Nursery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/homeRemedies">Home Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/post">See Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/submitPost">Post Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/adminPost">Admin Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/uploadDoc">Doctor Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/">SignOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h2>Doctor Data</h2>
+    {% for doctor in doctors %}
+    <div class="doctor">
+        <div class="photo-container">
+            <img src="{{ doctor.image }}" alt="Doctor Image">
+        </div>
+        <div class="info-container">
+            <div class="form-group">
+                <label>Name: <span>{{ doctor.name }}</span></label>
+            </div>
+            <div class="form-group">
+                <label>Specialization: <span>{{ doctor.specialization }}</span></label>
+            </div>
+            <div class="form-group">
+                <label>Degree: <span>{{ doctor.degree }}</span></label>
+            </div>
+            <div class="form-group">
+                <label>Contact: <span>{{ doctor.contact }}</span></label>
+            </div>
+            <div class="form-group">
+                <label>Appointment Time: <span>{{ doctor.time }}</span></label>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

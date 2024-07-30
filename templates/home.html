@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #4CAF50, #81C784);
+        }
+
+        .navbar-brand label {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-brand p {
+            color: white;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+
+        .slideshow-container {
+            max-width: 90%;
+            margin: 0 auto;
+            height: 300px;
+            position: relative;
+            margin-top: 118px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .indicator {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+
+        .container4 {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 30px;
+            font-size: 1rem;
+        }
+
+        .box {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 15px;
+            color: black;
+            flex: 1;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box img {
+            margin-bottom: 10px;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .box a {
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-light fixed-top background: linear-gradient(to right, #4CAF50, #81C784);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <label style="font-size: 30px;"><img src="/static/herbalverify.jpg" width="55px" height="55px"
+                        alt=""><b>
+                        HerbalVerify</b></label>
+                <p style="font-size: 10px; margin-top: -20px; margin-left: 65px;">Give Best Results</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> HerbalVerify</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scan">Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scanDisease">Disease Detection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/ayurvedicShop">Ayurvedic Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/nursery">Nursery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/homeRemedies">Home Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/doctor_data">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/post">See Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/submitPost">Post Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/adminPost">Admin Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/uploadDoc">Doctor Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/">SignOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+     <!--image slider -->
+   
+
+
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img src="/static/ad4.jpg" alt="Ad 1">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="/static/ad5.jpg" alt="Ad 2">
+        </div>
+
+        <!-- Slide 3
+        <div class="slide">
+            <img src="/static/ad3.jpeg" alt="Ad 3">
+        </div> -->
+
+        <!-- Add more slides as needed -->
+
+        <!-- Previous and Next buttons -->
+    </div>
+
+    <!-- Slide Indicator -->
+    <div class="indicator">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <!-- <span class="dot" onclick="currentSlide(3)"></span> -->
+        <!-- Add more spans for additional slides -->
+    </div>
+
+
+    <div class="container4">
+        <div class="box">
+            <a href="/about">
+                <img src="static/about.png" width="100px" height="100px" alt="">
+                About Us
+            </a>
+        </div>
+        <div class="box">
+            <a href="/contact">
+                <img src="static/contact.png" width="80px" height="80px" alt="">
+                Contact Us
+            </a>
+        </div>
+        <div class="box">
+            <a href="/scan">
+                <img src="static/plantLeafScan.png" width="100px" height="100px" alt="">
+                Plant Leaf Scan
+            </a>
+        </div>
+        <div class="box">
+            <a href="/scanDisease">
+                <img src="static/plantDiseaseDetect.jpg" width="70px" height="70px" alt="">
+                Disease Detection
+            </a>
+        </div>
+        <div class="box">
+            <a href="/ayurvedicShop">
+                <img src="static/AyurvedicShop.png" width="70px" height="70px" alt="">
+                Ayurvedic Shop
+            </a>
+        </div>
+        <div class="box">
+            <a href="/nursery">
+                <img src="static/plant-nursery.png" width="70px" height="70px" alt="">
+                Plant Nursery
+            </a>
+        </div>
+        <div class="box">
+            <a href="/homeRemedies">
+                <img src="static/homeRemedies.png" width="60px" height="60px" alt="">
+                Home Remedies
+            </a>
+        </div>
+        <div class="box">
+            <a href="/doctor_data">
+                <img src="static/doctor.webp" width="80px" height="100px" alt="">
+                Doctor
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize variables
+        var slideIndex = 0;
+        var slides = document.getElementsByClassName("slide");
+        var dots = document.getElementsByClassName("dot");
+
+        // Function to show a slide
+        function showSlide(index) {
+            // Hide all slides
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            // Deactivate all dots
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            // Show the slide at the specified index
+            slides[index].style.display = "block";
+            // Activate the corresponding dot
+            dots[index].classList.add("active");
+        }
+
+        // Function to move to the next slide
+        function nextSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0; // Restart slideshow from the first slide
+            }
+            showSlide(slideIndex);
+        }
+
+        // Function to move to the previous slide
+        function prevSlide() {
+            slideIndex--;
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1; // Go to the last slide
+            }
+            showSlide(slideIndex);
+        }
+
+        // Function to change slide by specified increment
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0; // Restart slideshow from the first slide
+            } else if (slideIndex < 0) {
+                slideIndex = slides.length - 1; // Go to the last slide
+            }
+            showSlide(slideIndex);
+        }
+
+        // Function to set current slide based on dot clicked
+        function currentSlide(n) {
+            slideIndex = n - 1; // Adjust for zero-based indexing
+            showSlide(slideIndex);
+        }
+
+        // Function to start slideshow
+        function startSlideshow() {
+            showSlide(slideIndex);
+            setInterval(nextSlide, 3000); // Change slide every 3 seconds (3000 milliseconds)
+        }
+
+        // Start the slideshow
+        startSlideshow();
+    </script>
+</body>
+
+</html>

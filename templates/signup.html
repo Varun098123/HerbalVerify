@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="\static\signup.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+                <div style="display: flex;"><img src="\static\herbalverify.jpg" height="55px" width="55px" alt="">
+                    <p style="margin-left: 10px; margin-top: 10px; font-size: 20px;"><b>HerbalVerify</b></p>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">LogIn</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/signup">SignUp</a>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <div class="login">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form action="/signup" method="post" class="login__form">
+            <h1 class="login__title">Sign Up</h1>
+
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="text" name="name" placeholder="Username" required class="login__input">
+                    <ion-icon name="person"></ion-icon>
+                </div>
+
+                <div class="login__box">
+                    <input type="email" name="email" placeholder="Email ID" required class="login__input">
+                    <ion-icon name="mail"></ion-icon>
+                </div>
+
+                <div class="login__box">
+                    <input type="password" name="password" placeholder="Password" required class="login__input">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </div>
+            </div>
+            <br>
+
+            <button type="submit" class="login__button">Create Account</button>
+            <button type="reset" class="login__button">Reset</button>
+
+            <div class="login__register">
+                Already have an account?<a href="/"><b>LogIn</b></a>
+            </div>
+        </form>
+        <a href="/home">Go to Home Page</a>
+    </div>
+
+
+</body>
+
+</html>

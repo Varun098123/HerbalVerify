@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        /* CSS for Submit Post Form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 131px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #4CAF50, #81C784);
+        }
+
+        .navbar-brand label {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-brand p {
+            color: white;
+        }
+
+        .navbar-nav {
+            list-style: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-light fixed-top background: linear-gradient(to right, #4CAF50, #81C784);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <label style="font-size: 30px;"><img src="/static/herbalverify.jpg" width="55px" height="55px"
+                        alt=""><b>
+                        HerbalVerify</b></label>
+                <p style="font-size: 10px; margin-top: -20px; margin-left: 65px;">Give Best Results</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> HerbalVerify</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scan">Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scanDisease">Disease Detection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/ayurvedicShop">Ayurvedic Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/nursery">Nursery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/homeRemedies">Home Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/doctor_data">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/post">See Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/adminPost">Admin Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/uploadDoc">Doctor Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/">SignOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 style="color: #4CAF50; font-weight: bold;">Post a Useful Information</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for category, message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form id="post-form" action="/submitPost" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full-name">Your Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="post-title">Post Title</label>
+                <input type="text" id="post-title" name="post-title" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <label for="post-description">Post Description</label>
+                <textarea id="post-description" name="post-description" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

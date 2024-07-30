@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/adminPost.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        /* CSS for Admin Panel */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .name {
+            font-size: 35px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 126px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #pending-posts {
+            width: 75%;
+
+            text-align: left;
+
+        }
+
+        .post {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .reject-btn {
+            color: red;
+            margin-left: 10px;
+        }
+
+        .reject-btn:hover {
+            color: #ff0000;
+        } 
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-light fixed-top background: linear-gradient(to right, #4CAF50, #81C784);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <label style="font-size: 30px;"><img src="/static/herbalverify.jpg" width="55px" height="55px"
+                        alt=""><b>
+                        HerbalVerify</b></label>
+                <p style="font-size: 10px; margin-top: -20px; margin-left: 65px;">Give Best Results</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> HerbalVerify</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scan">Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/scanDisease">Disease Detection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/ayurvedicShop">Ayurvedic Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/nursery">Nursery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/homeRemedies">Home Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/doctor_data">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/post">See Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/submitPost">Post Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/uploadDoc">Doctor Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="/">SignOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="name">Admin Panel</div>
+        <div id="pending-posts">
+            {% for post in pending_posts %}
+            <div class="post">
+                <h2>{{ post.post_title }}</h2>
+                <p><strong>Author:</strong> {{ post.full_name }}</p>
+                <p>{{ post.post_description }}</p>
+                <a href="/approve_post/{{ post._id }}">Approve</a>
+                <a href="/reject_post/{{ post._id }}" class="reject-btn">Reject</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
