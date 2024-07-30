@@ -1,0 +1,24 @@
+/* .image-container {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 100px); 
+}
+
+.text-over-image {
+    position: absolute;
+    top: 60%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+    color: green;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+}  */

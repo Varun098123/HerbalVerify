@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container1 {
+    width: 1204px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    /* border: 2px solid black; */
+}
+
+#myInput {
+    width: 337px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: 2px;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #4CAF50; /* Dark green */
+    color: #fff; /* White text color */
+}
+
+/* #8AAAE5 */
+.container2 {
+    width: 959px;
+    /* border: 2px solid black; */
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* table {
+    width: 100%;
+    border-collapse: collapse;
+} */
+
+th {
+    background-color: #81C784; /* Light green */
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.tableHeader {
+    background-color: #A5D6A7; /* Even lighter green */
+}
+
+/* Optional additional styling */
+body {
+    background-color: #F0F4C3; /* Very light green background */
+}
+
+input[type="text"] {
+    background-color: #C8E6C9; /* Light green input background */
+}
+
+.container1, .container2 {
+    border: 1px solid #A5D6A7; /* Border matching the table header */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+input[type="text"]::placeholder {
+    color: #388E3C; /* Darker green placeholder text */
+}
+
+table {
+    background-color: #E8F5E9; /* Very light green table background */
+}

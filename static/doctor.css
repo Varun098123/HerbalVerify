@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.home{
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+}
+
+.home .left{
+    width: 50%;
+    height: 100%;
+    /* background: #000000; */
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home .left img{
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.home .right{
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 100px;
+}
+.home .right h2{
+    font-size: 50px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.home .right p{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    padding: 0 10px;
+}
+.home .right a{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+.home .right a:hover{
+    background: #000;
+    color: white;
+}
